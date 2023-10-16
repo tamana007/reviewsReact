@@ -26,6 +26,13 @@ const Review = () => {
         <FaQuoteRight/>
       </span>
     </div>
+    <div className='author'>{name}</div>
+    <p className='job'>{job}</p>
+    <p className='info'>{text}</p>
+    <div className='btn-container'>
+      <button className='prev-btn'>{<FaChevronLeft/>}</button>
+      <button className='prev-btn'>{<FaChevronRight/>}</button>
+    </div>
     {/* <button onClick={changeReview}>click me</button> */}
 
   </article>

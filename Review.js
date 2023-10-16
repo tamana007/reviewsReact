@@ -5,16 +5,24 @@ import reviews from './data';
 
 const Review = () => {
 
-  const [people,setPeople]=useState(0)
+  const [people,setPeople]=useState(1)
   const {id,name,job,image,text}=reviews[people];
 
-  useEffect(()=>{
-    function changeReview(){
-    setPeople(1)
-    }
-  },[people])
+
 
   // function changeReview(){
+
+  let prevBtn=()=>{
+    // for(let i=0;i<reviews.length;i--){
+    //   setPeople(reviews[i].id)
+    // }
+    // const result=people+1;
+    setPeople((people)=>{
+      let newPeople=people+1;
+      return newPeople;
+    });
+
+  }
     
   
   console.log(people);
@@ -31,7 +39,7 @@ const Review = () => {
     <p className='info'>{text}</p>
     <div className='btn-container'>
       <button className='prev-btn'>{<FaChevronLeft/>}</button>
-      <button className='prev-btn'>{<FaChevronRight/>}</button>
+      <button className='prev-btn' onClick={prevBtn}>{<FaChevronRight/>}</button>
     </div>
     {/* <button onClick={changeReview}>click me</button> */}
 

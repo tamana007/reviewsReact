@@ -1,27 +1,50 @@
 import React, { useState,useEffect } from 'react';
-import people from './data';
+// import people from './data';
 import { FaChevronLeft, FaChevronRight, FaQuoteRight } from 'react-icons/fa';
 import reviews from './data';
 
 const Review = () => {
 
-  const [people,setPeople]=useState(1)
+  const [people,setPeople]=useState(0)
   const {id,name,job,image,text}=reviews[people];
 
 
 
   // function changeReview(){
 
-  let prevBtn=()=>{
-    // for(let i=0;i<reviews.length;i--){
-    //   setPeople(reviews[i].id)
-    // }
-    // const result=people+1;
+  // const checkPerson=(number)=>{
+  //   if(number>reviews.length-1){
+  //     return 0;
+  //   }
+  //   else if(number<0)
+  // return reviews.le}
+  // }
+  const checkPerson=(number)=>{
+    if(number>reviews.length-1){
+      return 0;
+    }
+    if(number<0){
+      return reviews.length-1
+    }
+    return number;
+
+
+  }
+
+  const  nextBtn=()=>{
     setPeople((people)=>{
       let newPeople=people+1;
-      return newPeople;
+      // console.log(newPeople);
+      return checkPerson(newPeople);
+      
     });
 
+  }
+  let prevBtn=()=>{
+    setPeople((people)=>{
+      let nextPeople=people-1;
+      return checkPerson(nextPeople);
+    })
   }
     
   
@@ -38,8 +61,8 @@ const Review = () => {
     <p className='job'>{job}</p>
     <p className='info'>{text}</p>
     <div className='btn-container'>
-      <button className='prev-btn'>{<FaChevronLeft/>}</button>
-      <button className='prev-btn' onClick={prevBtn}>{<FaChevronRight/>}</button>
+      <button className='prev-btn' onClick={prevBtn}>{<FaChevronLeft/>}</button>
+      <button className='prev-btn' onClick={nextBtn}>{<FaChevronRight/>}</button>
     </div>
     {/* <button onClick={changeReview}>click me</button> */}
 

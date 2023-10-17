@@ -46,6 +46,12 @@ const Review = () => {
       return checkPerson(nextPeople);
     })
   }
+  const randomBtn=()=>{
+  //  setPeople(Math.floor(Math.random*reviews.length-1))
+  let random =Math.floor(Math.random()*reviews.length-1)
+  setPeople (checkPerson(people+random));
+  // console.log(random);
+  }
     
   
   console.log(people);
@@ -63,6 +69,9 @@ const Review = () => {
     <div className='btn-container'>
       <button className='prev-btn' onClick={prevBtn}>{<FaChevronLeft/>}</button>
       <button className='prev-btn' onClick={nextBtn}>{<FaChevronRight/>}</button>
+    </div>
+    <div>
+      <button onClick={randomBtn}>Surprise me</button>
     </div>
     {/* <button onClick={changeReview}>click me</button> */}
 
